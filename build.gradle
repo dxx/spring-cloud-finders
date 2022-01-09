@@ -1,0 +1,14 @@
+description = "Spring Cloud Finders"
+
+configure(subprojects) { project ->
+    apply plugin: 'java'
+
+    group 'io.github.dxx'
+    version '0.1.0'
+
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        mavenCentral()
+        mavenLocal()
+    }
+}
