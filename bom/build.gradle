@@ -5,12 +5,18 @@ plugins {
 group 'io.github.dxx'
 version '0.1.0'
 
+javaPlatform {
+    allowDependencies()
+}
+
 dependencies {
+    api platform("org.springframework.boot:spring-boot-dependencies:${libraries.springBootVersion}")
+    api platform("org.springframework.cloud:spring-cloud-dependencies:${libraries.springCloudVersion}")
+
     constraints {
         // Finders Client
         api "io.github.dxx:finders-client:${libraries.findersClientVersion}"
 
-        // Junit5
         api "org.junit.jupiter:junit-jupiter:${libraries.junitVersion}"
     }
 }

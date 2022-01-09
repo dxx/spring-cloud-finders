@@ -1,7 +1,18 @@
 description = "Spring Cloud Finders"
 
-configure(subprojects) { project ->
-    apply plugin: 'java'
+ext {
+    javaProjects = subprojects - project(":bom")
+
+    libraries = [
+        springBootVersion: "2.6.1",
+        springCloudVersion: "2021.0.0",
+        findersClientVersion: "0.1.0",
+        junitVersion: "5.6.0",
+    ]
+}
+
+configure(javaProjects) { project ->
+    apply plugin: 'java-library'
 
     group 'io.github.dxx'
     version '0.1.0'
