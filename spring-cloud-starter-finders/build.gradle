@@ -1,0 +1,51 @@
+plugins {
+    id 'maven-publish'
+}
+
+description "Spring Cloud Starter Finders"
+
+dependencies {
+    api platform(project(":bom"))
+
+    implementation "org.springframework.boot:spring-boot"
+    implementation "org.springframework.boot:spring-boot-autoconfigure"
+    implementation "org.springframework.boot:spring-boot-autoconfigure-processor"
+    implementation "org.springframework.boot:spring-boot-configuration-processor"
+    implementation "org.springframework.cloud:spring-cloud-commons"
+    implementation "org.springframework.cloud:spring-cloud-context"
+    implementation "io.github.dxx:finders-client"
+
+    testImplementation "org.junit.jupiter:junit-jupiter"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            pom {
+                withXml {
+                    def node = asNode()
+                    node.dependencies.dependency.findAll { xmlDep ->
+                        if (project.configurations.implementation.allDependencies.findAll { dep ->
+                            xmlDep.groupId.text() == dep.group && xmlDep.artifactId.text() == dep.name
+                        } && xmlDep.scope.text() == 'runtime') {
+                            xmlDep.scope*.value = 'compile'
+                            // Non-project group
+                            if (xmlDep.groupId.text() != group) {
+                                xmlDep.appendNode('optional', true)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
+}
