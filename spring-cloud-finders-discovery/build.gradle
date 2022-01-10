@@ -1,4 +1,4 @@
-description "Spring Cloud Finders Core"
+description "Spring Cloud Finders Discovery"
 
 dependencies {
     api platform(project(":bom"))
