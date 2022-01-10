@@ -1,0 +1,19 @@
+description "Spring Cloud Finders Core"
+
+dependencies {
+    api platform(project(":bom"))
+
+    implementation "org.springframework.boot:spring-boot"
+    implementation "org.springframework.boot:spring-boot-autoconfigure"
+    implementation "org.springframework.boot:spring-boot-autoconfigure-processor"
+    implementation "org.springframework.boot:spring-boot-configuration-processor"
+    implementation "org.springframework.cloud:spring-cloud-commons"
+    implementation "org.springframework.cloud:spring-cloud-context"
+    implementation "io.github.dxx:finders-client"
+
+    testImplementation "org.junit.jupiter:junit-jupiter"
+}
+
+test {
+    useJUnitPlatform()
+}

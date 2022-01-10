@@ -8,4 +8,5 @@ pluginManagement {
 rootProject.name = 'spring-cloud-finders'
 
 include 'bom'
+include 'spring-cloud-finders-core'
 include 'spring-cloud-starter-finders'
