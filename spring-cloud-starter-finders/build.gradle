@@ -1,25 +1,10 @@
-plugins {
-    id 'maven-publish'
-}
-
 description "Spring Cloud Starter Finders"
 
 dependencies {
     api platform(project(":bom"))
 
-    implementation "org.springframework.boot:spring-boot"
-    implementation "org.springframework.boot:spring-boot-autoconfigure"
-    implementation "org.springframework.boot:spring-boot-autoconfigure-processor"
-    implementation "org.springframework.boot:spring-boot-configuration-processor"
-    implementation "org.springframework.cloud:spring-cloud-commons"
-    implementation "org.springframework.cloud:spring-cloud-context"
+    implementation "org.springframework.cloud:spring-cloud-starter"
     implementation "io.github.dxx:finders-client"
-
-    testImplementation "org.junit.jupiter:junit-jupiter"
-}
-
-test {
-    useJUnitPlatform()
 }
 
 publishing {
