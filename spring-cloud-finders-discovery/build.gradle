@@ -1,7 +1,7 @@
 description "Spring Cloud Finders Discovery"
 
 dependencies {
-    api platform(project(":bom"))
+    api platform(project(":spring-cloud-finders-bom"))
 
     implementation "org.springframework.boot:spring-boot"
     implementation "org.springframework.boot:spring-boot-autoconfigure"

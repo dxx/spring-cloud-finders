@@ -1,7 +1,7 @@
 description "Spring Cloud Starter Finders"
 
 dependencies {
-    api platform(project(":bom"))
+    api platform(project(":spring-cloud-finders-bom"))
 
     implementation "org.springframework.cloud:spring-cloud-starter"
     implementation "org.springframework.cloud:spring-cloud-starter-loadbalancer"

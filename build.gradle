@@ -1,7 +1,7 @@
 description = "Spring Cloud Finders"
 
 ext {
-    javaProjects = subprojects - project(":bom")
+    javaProjects = subprojects - project(":spring-cloud-finders-bom")
 
     libraries = [
         springBootVersion: "2.5.8",
