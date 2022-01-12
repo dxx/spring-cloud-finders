@@ -14,6 +14,7 @@ configure(subprojects) {
     apply plugin: "maven-publish"
 
     group "io.github.dxx"
+    version "0.1.0"
 
     repositories {
         maven { url "https://maven.aliyun.com/repository/public" }
@@ -24,8 +25,6 @@ configure(subprojects) {
 
 configure(javaProjects) { project ->
     apply plugin: "java-library"
-
-    version "0.1.0"
 
     java {
         withSourcesJar()

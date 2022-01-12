@@ -4,9 +4,6 @@ plugins {
 
 description = "Spring Cloud Finders Bom"
 
-group "io.github.dxx"
-version "0.1.0"
-
 javaPlatform {
     allowDependencies()
 }
@@ -16,6 +13,7 @@ dependencies {
     api platform("org.springframework.cloud:spring-cloud-dependencies:${libraries.springCloudVersion}")
 
     constraints {
+        api "io.github.dxx:spring-cloud-starter-finders:${project.version}"
         api "io.github.dxx:spring-cloud-finders-discovery:${project.version}"
         api "io.github.dxx:finders-client:${libraries.findersClientVersion}"
     }
