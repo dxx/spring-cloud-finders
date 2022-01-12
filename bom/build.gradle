@@ -1,9 +1,9 @@
 plugins {
-    id 'java-platform'
+    id "java-platform"
 }
 
-group 'io.github.dxx'
-version '0.1.0'
+group "io.github.dxx"
+version "0.1.0"
 
 javaPlatform {
     allowDependencies()
@@ -17,6 +17,41 @@ dependencies {
         // Finders Client
         api "io.github.dxx:finders-client:${libraries.findersClientVersion}"
 
-        api "org.junit.jupiter:junit-jupiter:${libraries.junitVersion}"
+        api "io.github.dxx:spring-cloud-finders-discovery:${project.version}"
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.javaPlatform
+
+            pom {
+                afterEvaluate {
+                    name = project.name
+                    description = project.description
+                }
+
+                url = "https://github.com/dxx/spring-cloud-finders"
+
+                licenses {
+                    license {
+                        name = "The Apache License, Version 2.0"
+                        url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = "dxx"
+                        name = "dxx"
+                        email = "dx1898@foxmail.com"
+                    }
+                }
+            }
+        }
+    }
+    repositories {
+        mavenLocal()
     }
 }

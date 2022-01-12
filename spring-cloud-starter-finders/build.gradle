@@ -4,33 +4,7 @@ dependencies {
     api platform(project(":bom"))
 
     implementation "org.springframework.cloud:spring-cloud-starter"
-    implementation "io.github.dxx:finders-client"
-}
+    implementation "org.springframework.cloud:spring-cloud-starter-loadbalancer"
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-
-            pom {
-                withXml {
-                    def node = asNode()
-                    node.dependencies.dependency.findAll { xmlDep ->
-                        if (project.configurations.implementation.allDependencies.findAll { dep ->
-                            xmlDep.groupId.text() == dep.group && xmlDep.artifactId.text() == dep.name
-                        } && xmlDep.scope.text() == 'runtime') {
-                            xmlDep.scope*.value = 'compile'
-                            // Non-project group
-                            if (xmlDep.groupId.text() != group) {
-                                xmlDep.appendNode('optional', true)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    repositories {
-        mavenLocal()
-    }
+    implementation "io.github.dxx:spring-cloud-finders-discovery"
 }
