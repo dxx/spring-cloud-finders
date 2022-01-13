@@ -3,11 +3,9 @@ description = "Spring Cloud Finders"
 ext {
     javaProjects = subprojects - project(":spring-cloud-finders-bom")
 
-    libraries = [
-        springBootVersion: "2.5.8",
-        springCloudVersion: "2020.0.5",
-        findersClientVersion: "0.1.0",
-    ]
+    set("springBootVersion", "2.5.8")
+    set("springCloudVersion", "2020.0.5")
+    set("findersClientVersion", "0.1.0")
 }
 
 configure(subprojects) {

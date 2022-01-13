@@ -9,13 +9,13 @@ javaPlatform {
 }
 
 dependencies {
-    api platform("org.springframework.boot:spring-boot-dependencies:${libraries.springBootVersion}")
-    api platform("org.springframework.cloud:spring-cloud-dependencies:${libraries.springCloudVersion}")
+    api platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+    api platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
 
     constraints {
         api "io.github.dxx:spring-cloud-starter-finders:${project.version}"
         api "io.github.dxx:spring-cloud-finders-discovery:${project.version}"
-        api "io.github.dxx:finders-client:${libraries.findersClientVersion}"
+        api "io.github.dxx:finders-client:${findersClientVersion}"
     }
 }
 
