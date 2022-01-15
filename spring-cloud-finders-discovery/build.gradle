@@ -4,7 +4,6 @@ dependencies {
     api platform(project(":spring-cloud-finders-bom"))
 
     implementation "org.springframework.boot:spring-boot"
-    implementation "org.springframework.boot:spring-boot-autoconfigure"
     implementation "org.springframework.boot:spring-boot-autoconfigure-processor"
     implementation "org.springframework.boot:spring-boot-configuration-processor"
     implementation "org.springframework.cloud:spring-cloud-commons"
