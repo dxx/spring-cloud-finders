@@ -8,5 +8,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnDiscoveryEnabled
+@ConditionalOnFindersDiscoveryEnabled
 public class FindersClientAutoConfiguration {
 }
