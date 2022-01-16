@@ -1,9 +1,9 @@
-package io.github.dxx.cloud.registry;
+package io.github.dxx.finders.cloud.registry;
 
-import io.github.dxx.cloud.ConditionalOnFindersDiscoveryEnabled;
-import io.github.dxx.cloud.FindersServiceAutoConfiguration;
-import io.github.dxx.cloud.FindersDiscoveryProperties;
-import io.github.dxx.cloud.FindersServiceManager;
+import io.github.dxx.finders.cloud.ConditionalOnFindersDiscoveryEnabled;
+import io.github.dxx.finders.cloud.FindersServiceAutoConfiguration;
+import io.github.dxx.finders.cloud.FindersDiscoveryProperties;
+import io.github.dxx.finders.cloud.FindersServiceManager;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

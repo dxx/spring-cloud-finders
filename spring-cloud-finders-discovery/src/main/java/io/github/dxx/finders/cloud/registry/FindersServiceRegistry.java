@@ -1,7 +1,7 @@
-package io.github.dxx.cloud.registry;
+package io.github.dxx.finders.cloud.registry;
 
-import io.github.dxx.cloud.FindersDiscoveryProperties;
-import io.github.dxx.cloud.FindersServiceManager;
+import io.github.dxx.finders.cloud.FindersDiscoveryProperties;
+import io.github.dxx.finders.cloud.FindersServiceManager;
 import io.github.dxx.finders.client.FindersClientService;
 import io.github.dxx.finders.client.FindersRuntimeException;
 import io.github.dxx.finders.client.model.Instance;

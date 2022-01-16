@@ -1,4 +1,4 @@
-package io.github.dxx.cloud.discovery;
+package io.github.dxx.finders.cloud.discovery;
 
 /**
  * @author dxx

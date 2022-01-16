@@ -1,6 +1,6 @@
-package io.github.dxx.cloud.discovery;
+package io.github.dxx.finders.cloud.discovery;
 
-import io.github.dxx.cloud.ConditionalOnFindersDiscoveryEnabled;
+import io.github.dxx.finders.cloud.ConditionalOnFindersDiscoveryEnabled;
 import org.springframework.cloud.client.ConditionalOnDiscoveryEnabled;
 import org.springframework.context.annotation.Configuration;
 

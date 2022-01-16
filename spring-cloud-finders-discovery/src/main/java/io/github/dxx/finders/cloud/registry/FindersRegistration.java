@@ -1,6 +1,6 @@
-package io.github.dxx.cloud.registry;
+package io.github.dxx.finders.cloud.registry;
 
-import io.github.dxx.cloud.FindersDiscoveryProperties;
+import io.github.dxx.finders.cloud.FindersDiscoveryProperties;
 import org.springframework.cloud.client.DefaultServiceInstance;
 import org.springframework.cloud.client.serviceregistry.Registration;
 

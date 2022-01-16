@@ -1,4 +1,4 @@
-package io.github.dxx.cloud.registry;
+package io.github.dxx.finders.cloud.registry;
 
 import org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration;
 import org.springframework.cloud.client.serviceregistry.AutoServiceRegistrationProperties;

@@ -1,4 +1,4 @@
-package io.github.dxx.cloud;
+package io.github.dxx.finders.cloud;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

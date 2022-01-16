@@ -1,4 +1,4 @@
-package io.github.dxx.cloud;
+package io.github.dxx.finders.cloud;
 
 import io.github.dxx.finders.client.constant.Services;
 import org.springframework.beans.factory.annotation.Autowired;
