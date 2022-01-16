@@ -1,0 +1,76 @@
+{
+  "properties": [
+    {
+      "name": "spring.cloud.finders.discovery.server-list",
+      "type": "java.lang.String",
+      "defaultValue": "localhost:9080",
+      "description": "Url list of finders server."
+    },
+    {
+      "name": "spring.cloud.finders.discovery.register-enabled",
+      "type": "java.lang.Boolean",
+      "defaultValue": true,
+      "description": "Whether to enable service registration."
+    },
+    {
+      "name": "spring.cloud.finders.discovery.namespace",
+      "type": "java.lang.String",
+      "defaultValue": "default",
+      "description": "Namespace."
+    },
+    {
+      "name": "spring.cloud.finders.discovery.cluster",
+      "type": "java.lang.String",
+      "defaultValue": "DEFAULT_CLUSTER",
+      "description": "Cluster name."
+    },
+    {
+      "name": "spring.cloud.finders.discovery.service",
+      "type": "java.lang.String",
+      "defaultValue": "${spring.application.name}",
+      "description": "Service name to registry."
+    },
+    {
+      "name": "spring.cloud.finders.discovery.ip",
+      "type": "java.lang.String",
+      "description": "The ip to register, needn't set it if the autodetect ip works well."
+    },
+    {
+      "name": "spring.cloud.finders.discovery.port",
+      "type": "java.lang.Integer",
+      "defaultValue": "${server.port}",
+      "description": "The port to register, needn't set it if the autodetect port works well."
+    },
+    {
+      "name": "spring.cloud.finders.discovery.secure",
+      "type": "java.lang.Boolean",
+      "defaultValue": "false",
+      "description": "Whether the service is a https service."
+    },
+    {
+      "name": "spring.cloud.finders.discovery.request-max-retry",
+      "type": "java.lang.Integer",
+      "description": "Number of max retries when the request fails."
+    },
+    {
+      "name": "spring.cloud.finders.discovery.service-pull-threads",
+      "type": "java.lang.Integer",
+      "description": "Number of threads processing the pull service."
+    },
+    {
+      "name": "spring.cloud.finders.discovery.heartbeat-threads",
+      "type": "java.lang.Integer",
+      "description": "Number of threads processing the heartbeat."
+    },
+    {
+      "name": "spring.cloud.finders.discovery.service-pull-period",
+      "type": "java.lang.Long",
+      "description": "Period of the service pull."
+    },
+    {
+      "name": "spring.cloud.finders.discovery.heartbeat-period",
+      "type": "java.lang.Long",
+      "description": "Period of the heartbeat."
+    }
+  ]
+}

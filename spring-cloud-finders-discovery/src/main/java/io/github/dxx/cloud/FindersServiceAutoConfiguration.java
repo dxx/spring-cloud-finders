@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnDiscoveryEnabled
 @ConditionalOnFindersDiscoveryEnabled
 @EnableConfigurationProperties({FindersDiscoveryProperties.class})
-public class FindersDiscoveryAutoConfiguration {
+public class FindersServiceAutoConfiguration {
 
     @Bean
     public FindersServiceManager findersService(FindersDiscoveryProperties findersDiscoveryProperties) {
