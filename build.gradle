@@ -41,19 +41,11 @@ configure(javaProjects) { project ->
                 attributes "Implementation-Title": archiveBaseName
                 attributes "Implementation-Version": archiveVersion
                 attributes "Build-Gradle": gradle.gradleVersion
-                attributes 'Build-Jdk': System.getProperty("java.version")
-                attributes 'Build-Timestamp': LocalDateTime.now().format("yyyy-MM-dd HH:mm:ss")
+                attributes "Build-Jdk": System.getProperty("java.version")
+                attributes "Build-Timestamp": LocalDateTime.now().format("yyyy-MM-dd HH:mm:ss")
             }
         }
     }
-
-    def excludeOptionalModules = [
-        "spring-cloud-starter-finders"
-    ]
-
-    def excludeOptionalArtifactIds = [
-        "finders-client"
-    ]
 
     publishing {
         publications {
@@ -91,18 +83,6 @@ configure(javaProjects) { project ->
                                 xmlDep.groupId.text() == dep.group && xmlDep.artifactId.text() == dep.name
                             }.each {
                                 xmlDep.scope*.value = "compile"
-
-                                // Exclude by module
-                                if (excludeOptionalModules.findIndexOf { module ->
-                                    module == node.artifactId.text() } >= 0) {
-                                    return
-                                }
-                                // Exclude by artifactId
-                                if (excludeOptionalArtifactIds.findIndexOf { artifactId ->
-                                    artifactId == xmlDep.artifactId.text() } >= 0) {
-                                    return
-                                }
-
                                 xmlDep.appendNode("optional", true)
                             }
                         }
@@ -110,6 +90,7 @@ configure(javaProjects) { project ->
                 }
             }
         }
+
         repositories {
             mavenLocal()
         }

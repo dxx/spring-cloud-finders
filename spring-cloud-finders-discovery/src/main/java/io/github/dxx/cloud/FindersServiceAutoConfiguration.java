@@ -1,5 +1,6 @@
 package io.github.dxx.cloud;
 
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.client.ConditionalOnDiscoveryEnabled;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,11 +11,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnDiscoveryEnabled
 @ConditionalOnFindersDiscoveryEnabled
+@EnableConfigurationProperties({FindersDiscoveryProperties.class})
 public class FindersDiscoveryAutoConfiguration {
 
     @Bean
-    public FindersService findersService() {
-        return new FindersService();
+    public FindersServiceManager findersService(FindersDiscoveryProperties findersDiscoveryProperties) {
+        return new FindersServiceManager(findersDiscoveryProperties);
     }
 
 }

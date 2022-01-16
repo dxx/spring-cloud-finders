@@ -10,7 +10,7 @@ dependencies {
     implementation "org.springframework.cloud:spring-cloud-commons"
     implementation "org.springframework.cloud:spring-cloud-context"
 
-    implementation "io.github.dxx:finders-client"
+    api "io.github.dxx:finders-client"
 
     testImplementation "org.springframework.boot:spring-boot-starter-test"
 }
