@@ -81,13 +81,17 @@ public class FindersDiscoveryProperties {
      */
     private long heartbeatPeriod;
 
+    private InetUtils inet;
+
     @Autowired
-    private InetUtils inetUtils;
+    public void setInet(InetUtils inet) {
+        this.inet = inet;
+    }
 
     @PostConstruct
     public void init() {
         if (!StringUtils.hasText(ip)) {
-            ip = inetUtils.findFirstNonLoopbackHostInfo().getIpAddress();
+            ip = inet.findFirstNonLoopbackHostInfo().getIpAddress();
         }
     }
 

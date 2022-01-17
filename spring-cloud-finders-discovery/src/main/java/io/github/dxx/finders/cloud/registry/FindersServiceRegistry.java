@@ -112,8 +112,8 @@ public class FindersServiceRegistry implements ServiceRegistry<FindersRegistrati
         FindersClientService findersClientService = findersServiceManager.getFindersClientService();
         String serviceName = registration.getServiceId();
         try {
-            List<Instance> instanceList = findersClientService.getAllInstances(serviceName, findersDiscoveryProperties.getCluster());
-            Optional<Instance> optionalInstance = instanceList.stream()
+            List<Instance> instances = findersClientService.getAllInstances(serviceName, findersDiscoveryProperties.getCluster());
+            Optional<Instance> optionalInstance = instances.stream()
                     .filter(item -> registration.getHost().equals(item.getIp()) && registration.getPort() == item.getPort()).findFirst();
             if (optionalInstance.isPresent()) {
                 return optionalInstance.get().getStatus() == InstanceStatus.HEALTHY ? STATUS_UP : STATUS_DOWN;
