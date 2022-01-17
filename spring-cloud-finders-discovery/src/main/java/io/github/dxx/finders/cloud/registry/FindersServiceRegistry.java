@@ -81,7 +81,7 @@ public class FindersServiceRegistry implements ServiceRegistry<FindersRegistrati
 
     @Override
     public void close() {
-        findersServiceManager.close();
+        this.findersServiceManager.close();
     }
 
     @Override

@@ -29,7 +29,6 @@ public class FindersServiceManager {
 
     public void close() {
         this.findersClientService.close();
-
     }
 
     private FindersClientService buildFindersClientService(FindersDiscoveryProperties discoveryProperties) {
