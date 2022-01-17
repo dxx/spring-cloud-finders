@@ -88,7 +88,7 @@ public class FindersServiceRegistry implements ServiceRegistry<FindersRegistrati
     public void setStatus(FindersRegistration registration, String status) {
         if (!STATUS_UP.equalsIgnoreCase(status)
                 && !STATUS_DOWN.equalsIgnoreCase(status)) {
-            LOGGER.warn("Can't support status {}, please choose UP or DOWN", status);
+            LOGGER.warn("Can not support status {}, please choose UP or DOWN", status);
             return;
         }
 
