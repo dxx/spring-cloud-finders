@@ -53,8 +53,12 @@ public class FindersDiscoveryClient implements DiscoveryClient {
 
     @Override
     public List<String> getServices() {
-        LOGGER.error("Get all service name from finders server failed");
-        return Collections.emptyList();
+        try {
+            return findersServiceManager.getFindersClientService().getServiceNames();
+        } catch (Exception e) {
+            LOGGER.error("Get all service name from finders server failed");
+            return Collections.emptyList();
+        }
     }
 
     private List<ServiceInstance> instanceToServiceInstances(List<Instance> instances, String serviceId) {
