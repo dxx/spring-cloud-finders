@@ -53,7 +53,7 @@ public class FindersDiscoveryClient implements DiscoveryClient {
 
     @Override
     public List<String> getServices() {
-        LOGGER.error("Get all service name from finders server error");
+        LOGGER.error("Get all service name from finders server failed");
         return Collections.emptyList();
     }
 

@@ -54,7 +54,7 @@ public class FindersServiceRegistry implements ServiceRegistry<FindersRegistrati
                     registration.getHost(), registration.getPort());
         }
         catch (Exception e) {
-            LOGGER.error(String.format("Finders register %s error", serviceName), e);
+            LOGGER.error(String.format("Finders register %s failed", serviceName), e);
             rethrowRuntimeException(e);
         }
     }
@@ -74,7 +74,7 @@ public class FindersServiceRegistry implements ServiceRegistry<FindersRegistrati
                     registration.getPort(), cluster);
         }
         catch (Exception e) {
-            LOGGER.error(String.format("Finders deregister %s error", serviceName), e);
+            LOGGER.error(String.format("Finders deregister %s failed", serviceName), e);
         }
         LOGGER.info("Finders deregister finished");
     }
@@ -119,7 +119,7 @@ public class FindersServiceRegistry implements ServiceRegistry<FindersRegistrati
                 return optionalInstance.get().getStatus() == InstanceStatus.HEALTHY ? STATUS_UP : STATUS_DOWN;
             }
         } catch (Exception e) {
-            LOGGER.error(String.format("Get all instance of %s error", serviceName), e);
+            LOGGER.error(String.format("Get all instance of %s failed", serviceName), e);
         }
         return null;
     }
