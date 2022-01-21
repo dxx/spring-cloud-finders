@@ -24,14 +24,14 @@ public class FindersDiscoveryClient implements DiscoveryClient {
 
     public static final String DESCRIPTION = "Spring Cloud Finders Discovery Client";
 
-    private final FindersDiscoveryProperties findersDiscoveryProperties;
+    private final FindersDiscoveryProperties discoveryProperties;
 
-    private final FindersServiceManager findersServiceManager;
+    private final FindersServiceManager serviceManager;
 
-    public FindersDiscoveryClient(FindersDiscoveryProperties findersDiscoveryProperties,
-                                  FindersServiceManager findersServiceManager) {
-        this.findersDiscoveryProperties = findersDiscoveryProperties;
-        this.findersServiceManager = findersServiceManager;
+    public FindersDiscoveryClient(FindersDiscoveryProperties discoveryProperties,
+                                  FindersServiceManager serviceManager) {
+        this.discoveryProperties = discoveryProperties;
+        this.serviceManager = serviceManager;
     }
 
     @Override
@@ -41,8 +41,8 @@ public class FindersDiscoveryClient implements DiscoveryClient {
 
     @Override
     public List<ServiceInstance> getInstances(String serviceId) {
-        FindersClientService findersClientService = findersServiceManager.getFindersClientService();
-        String cluster = findersDiscoveryProperties.getCluster();
+        FindersClientService findersClientService = serviceManager.getFindersClientService();
+        String cluster = discoveryProperties.getCluster();
         try {
             List<Instance> instances = findersClientService.getInstances(serviceId, cluster, true);
             return instanceToServiceInstances(instances, serviceId);
@@ -54,7 +54,7 @@ public class FindersDiscoveryClient implements DiscoveryClient {
     @Override
     public List<String> getServices() {
         try {
-            return findersServiceManager.getFindersClientService().getServiceNames();
+            return serviceManager.getFindersClientService().getServiceNames();
         } catch (Exception e) {
             LOGGER.error("Get all service name from finders server failed");
             return Collections.emptyList();
@@ -68,7 +68,7 @@ public class FindersDiscoveryClient implements DiscoveryClient {
     private ServiceInstance instanceToServiceInstance(Instance instance, String serviceId) {
         return new FindersServiceInstance(instance.getInstanceId(),
                 serviceId, instance.getIp(), instance.getPort(),
-                findersDiscoveryProperties.isSecure());
+                discoveryProperties.isSecure());
     }
 
 }
