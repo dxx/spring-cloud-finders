@@ -19,6 +19,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration(proxyBeanMethods = false)
 public class FindersDiscoveryAutoConfiguration {
 
+    @Bean
+    public FindersDiscovery findersDiscovery(
+            FindersDiscoveryProperties findersDiscoveryProperties,
+            FindersServiceManager findersServiceManager) {
+        return new FindersDiscovery(findersDiscoveryProperties, findersServiceManager);
+    }
+
     @Configuration(proxyBeanMethods = false)
     @ConditionalOnDiscoveryEnabled
     @ConditionalOnBlockingDiscoveryEnabled
@@ -29,10 +36,8 @@ public class FindersDiscoveryAutoConfiguration {
     protected static class FindersDiscoveryConfiguration {
 
         @Bean
-        public DiscoveryClient findersDiscoveryClient(
-                FindersDiscoveryProperties findersDiscoveryProperties,
-                FindersServiceManager findersServiceManager) {
-            return new FindersDiscoveryClient(findersDiscoveryProperties, findersServiceManager);
+        public DiscoveryClient findersDiscoveryClient(FindersDiscovery findersDiscovery) {
+            return new FindersDiscoveryClient(findersDiscovery);
         }
 
     }
@@ -46,10 +51,8 @@ public class FindersDiscoveryAutoConfiguration {
     protected static class FindersReactiveDiscoveryConfiguration {
 
         @Bean
-        public ReactiveDiscoveryClient findersReactiveDiscoveryClient(
-                FindersDiscoveryProperties findersDiscoveryProperties,
-                FindersServiceManager findersServiceManager) {
-            return new FindersReactiveDiscoveryClient(findersDiscoveryProperties, findersServiceManager);
+        public ReactiveDiscoveryClient findersReactiveDiscoveryClient(FindersDiscovery findersDiscovery) {
+            return new FindersReactiveDiscoveryClient(findersDiscovery);
         }
 
     }

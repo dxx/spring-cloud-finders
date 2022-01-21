@@ -1,10 +1,5 @@
 package io.github.dxx.finders.cloud.discovery;
 
-import io.github.dxx.finders.client.FindersClientService;
-import io.github.dxx.finders.client.model.Instance;
-import io.github.dxx.finders.cloud.FindersDiscoveryProperties;
-import io.github.dxx.finders.cloud.FindersServiceInstance;
-import io.github.dxx.finders.cloud.FindersServiceManager;
 import org.reactivestreams.Publisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,9 +9,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
-import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * @author dxx
@@ -27,14 +20,10 @@ public class FindersReactiveDiscoveryClient implements ReactiveDiscoveryClient {
 
     public static final String DESCRIPTION = "Spring Cloud Finders Reactive Discovery Client";
 
-    private final FindersDiscoveryProperties discoveryProperties;
+    private final FindersDiscovery discovery;
 
-    private final FindersServiceManager serviceManager;
-
-    public FindersReactiveDiscoveryClient(FindersDiscoveryProperties discoveryProperties,
-                                          FindersServiceManager serviceManager) {
-        this.discoveryProperties = discoveryProperties;
-        this.serviceManager = serviceManager;
+    public FindersReactiveDiscoveryClient(FindersDiscovery discovery) {
+        this.discovery = discovery;
     }
 
     @Override
@@ -52,7 +41,7 @@ public class FindersReactiveDiscoveryClient implements ReactiveDiscoveryClient {
     public Flux<String> getServices() {
         return Flux.defer(() -> {
             try {
-                return Flux.fromIterable(serviceManager.getFindersClientService().getServiceNames());
+                return Flux.fromIterable(discovery.getServiceNames());
             } catch (Exception e) {
                 LOGGER.error("Get all service name from finders server failed");
                 return Flux.empty();
@@ -62,26 +51,13 @@ public class FindersReactiveDiscoveryClient implements ReactiveDiscoveryClient {
 
     private Function<String, Publisher<ServiceInstance>> getInstancesFromFinders() {
         return serviceId -> {
-            FindersClientService findersClientService = serviceManager.getFindersClientService();
-            String cluster = discoveryProperties.getCluster();
             try {
-                List<Instance> instances = findersClientService.getInstances(serviceId, cluster, true);
-                return Flux.fromIterable(instanceToServiceInstances(instances, serviceId));
+                return Flux.fromIterable(discovery.getInstances(serviceId));
             } catch (Exception e) {
                 LOGGER.error(String.format("Can not get instance of %s from finders server", serviceId));
                 return Flux.empty();
             }
         };
-    }
-
-    private List<ServiceInstance> instanceToServiceInstances(List<Instance> instances, String serviceId) {
-        return instances.stream().map(item -> instanceToServiceInstance(item, serviceId)).collect(Collectors.toList());
-    }
-
-    private ServiceInstance instanceToServiceInstance(Instance instance, String serviceId) {
-        return new FindersServiceInstance(instance.getInstanceId(),
-                serviceId, instance.getIp(), instance.getPort(),
-                discoveryProperties.isSecure());
     }
 
 }
