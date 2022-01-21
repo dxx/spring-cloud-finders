@@ -5,10 +5,11 @@ dependencies {
 
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}"
 
-    implementation "org.springframework.boot:spring-boot-starter"
     implementation "org.springframework.boot:spring-boot-configuration-processor"
+    implementation "org.springframework.boot:spring-boot-starter"
     implementation "org.springframework.cloud:spring-cloud-commons"
     implementation "org.springframework.cloud:spring-cloud-context"
+    implementation "io.projectreactor:reactor-core"
 
     api "io.github.dxx:finders-client"
 

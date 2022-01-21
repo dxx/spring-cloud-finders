@@ -15,6 +15,7 @@ dependencies {
     constraints {
         api "io.github.dxx:spring-cloud-starter-finders:${project.version}"
         api "io.github.dxx:spring-cloud-finders-discovery:${project.version}"
+        api "io.projectreactor:reactor-core:${reactorVersion}"
         api "io.github.dxx:finders-client:${findersClientVersion}"
     }
 }
