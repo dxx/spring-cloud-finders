@@ -52,8 +52,7 @@ public class FindersServiceRegistry implements ServiceRegistry<FindersRegistrati
                     registration.getPort(), cluster);
             LOGGER.info("Finders register {} {} {}:{} finished", cluster, serviceName,
                     registration.getHost(), registration.getPort());
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             LOGGER.error(String.format("Finders register %s failed", serviceName), e);
             rethrowRuntimeException(e);
         }
@@ -72,8 +71,7 @@ public class FindersServiceRegistry implements ServiceRegistry<FindersRegistrati
         try {
             findersClientService.deregisterInstance(serviceName, registration.getHost(),
                     registration.getPort(), cluster);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             LOGGER.error(String.format("Finders deregister %s failed", serviceName), e);
         }
         LOGGER.info("Finders deregister finished");
