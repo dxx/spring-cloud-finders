@@ -1,0 +1,21 @@
+apply plugin: "java-library"
+apply from: rootProject.file("gradle/publishing.gradle")
+
+jar {
+    into("META-INF/") {
+        from rootProject.file("LICENSE")
+    }
+    into("META-INF/maven/${project.group}/${project.name}") {
+        from { generatePomFileForMavenJavaPublication }
+        rename ".*", "pom.xml"
+    }
+    afterEvaluate {
+        manifest {
+            attributes "Implementation-Title": archiveBaseName
+            attributes "Implementation-Version": archiveVersion
+            attributes "Build-Gradle": gradle.gradleVersion
+            attributes "Build-Jdk": System.getProperty("java.version")
+            attributes "Build-Timestamp": LocalDateTime.now().format("yyyy-MM-dd HH:mm:ss")
+        }
+    }
+}

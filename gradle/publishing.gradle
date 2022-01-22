@@ -1,0 +1,54 @@
+apply plugin: "maven-publish"
+
+java {
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            pom {
+                afterEvaluate {
+                    name = project.name
+                    description = project.description
+                }
+
+                url = "https://github.com/dxx/spring-cloud-finders"
+
+                licenses {
+                    license {
+                        name = "The Apache License, Version 2.0"
+                        url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = "dxx"
+                        name = "dxx"
+                        email = "dx1898@foxmail.com"
+                    }
+                }
+
+                withXml {
+                    def node = asNode()
+                    node.dependencies.dependency.findAll { xmlDep ->
+                        xmlDep.scope.text() == "runtime" && project.configurations.implementation
+                                .allDependencies.find { dep ->
+                            xmlDep.groupId.text() == dep.group && xmlDep.artifactId.text() == dep.name
+                        }.each {
+                            xmlDep.scope*.value = "compile"
+                            xmlDep.appendNode("optional", true)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    repositories {
+        mavenLocal()
+    }
+}
