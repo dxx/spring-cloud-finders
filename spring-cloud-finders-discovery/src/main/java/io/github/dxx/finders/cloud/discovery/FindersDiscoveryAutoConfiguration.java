@@ -5,6 +5,7 @@ import io.github.dxx.finders.cloud.FindersDiscoveryProperties;
 import io.github.dxx.finders.cloud.FindersServiceManager;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.cloud.client.*;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.discovery.ReactiveDiscoveryClient;
@@ -51,6 +52,7 @@ public class FindersDiscoveryAutoConfiguration {
     protected static class FindersReactiveDiscoveryConfiguration {
 
         @Bean
+        @ConditionalOnMissingBean
         public ReactiveDiscoveryClient findersReactiveDiscoveryClient(FindersDiscovery findersDiscovery) {
             return new FindersReactiveDiscoveryClient(findersDiscovery);
         }
