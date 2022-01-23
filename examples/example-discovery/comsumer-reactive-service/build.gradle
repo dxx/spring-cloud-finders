@@ -1,0 +1,16 @@
+application {
+    mainClassName = "finders.example.discovery.consumer.reactive.ConsumerReactiveApplication"
+}
+
+dependencies {
+    api platform(project(":example-bom"))
+
+    api "org.springframework.boot:spring-boot-starter-webflux"
+    api "org.springframework.cloud:spring-cloud-starter-loadbalancer"
+
+    api "io.github.dxx:spring-cloud-starter-finders"
+}
+
+test {
+    useJUnitPlatform()
+}
