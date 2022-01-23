@@ -1,0 +1,13 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+    }
+}
+
+rootProject.name = 'examples'
+
+include 'example-bom'
+include 'example-discovery'
+include 'example-discovery:greeting-service'
+include 'example-discovery:hello-service'

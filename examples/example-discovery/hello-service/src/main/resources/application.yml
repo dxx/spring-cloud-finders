@@ -1,0 +1,10 @@
+server:
+  port: 7001
+
+spring:
+  application:
+    name: hello-service
+  cloud:
+    finders:
+      discovery:
+        server-list: 127.0.0.1:9080

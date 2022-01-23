@@ -1,0 +1,15 @@
+application {
+    mainClassName = "finders.example.discovery.hello.HelloApplication"
+}
+
+dependencies {
+    api platform(project(":example-bom"))
+
+    api "org.springframework.boot:spring-boot-starter-web"
+
+    api "io.github.dxx:spring-cloud-starter-finders"
+}
+
+test {
+    useJUnitPlatform()
+}

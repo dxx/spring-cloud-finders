@@ -1,0 +1,18 @@
+plugins {
+    id "java-platform"
+}
+
+description = "Spring Cloud Finders Example BOM"
+
+javaPlatform {
+    allowDependencies()
+}
+
+dependencies {
+    api platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+    api platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
+
+    constraints {
+        api "io.github.dxx:spring-cloud-starter-finders:${springCloudFindersVersion}"
+    }
+}
