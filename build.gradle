@@ -9,7 +9,7 @@ ext {
     set("reactorVersion", "3.4.13")
 }
 
-configure(subprojects) {
+configure(subprojects) { project ->
     group "io.github.dxx"
     version "0.1.0"
 
