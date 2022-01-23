@@ -1,0 +1,16 @@
+application {
+    mainClassName = "finders.example.gateway.GatewayApplication"
+}
+
+dependencies {
+    api platform(project(":example-bom"))
+
+    api "org.springframework.cloud:spring-cloud-starter-gateway"
+    api "org.springframework.cloud:spring-cloud-starter-loadbalancer"
+
+    api "io.github.dxx:spring-cloud-starter-finders"
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,10 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: gateway-provider-service
+  cloud:
+    finders:
+      discovery:
+        server-list: 127.0.0.1:9080
