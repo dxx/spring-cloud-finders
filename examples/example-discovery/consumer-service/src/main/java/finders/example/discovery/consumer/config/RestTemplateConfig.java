@@ -1,4 +1,4 @@
-package finders.example.discovery.greeting.config;
+package finders.example.discovery.consumer.config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;

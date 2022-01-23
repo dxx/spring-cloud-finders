@@ -1,9 +1,9 @@
 server:
-  port: 7001
+  port: 8000
 
 spring:
   application:
-    name: hello-service
+    name: consumer-service
   cloud:
     finders:
       discovery:

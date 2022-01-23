@@ -1,4 +1,4 @@
-package finders.example.discovery.hello;
+package finders.example.discovery.consumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,10 +9,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-public class HelloApplication {
+public class ConsumerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(HelloApplication.class);
+        SpringApplication.run(ConsumerApplication.class);
     }
 
 }

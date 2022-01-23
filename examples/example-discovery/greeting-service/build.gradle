@@ -6,9 +6,6 @@ dependencies {
     api platform(project(":example-bom"))
 
     api "org.springframework.boot:spring-boot-starter-web"
-    api "org.springframework.cloud:spring-cloud-starter-loadbalancer"
-    api "org.springframework.cloud:spring-cloud-starter-openfeign"
-    api "io.github.openfeign:feign-okhttp"
 
     api "io.github.dxx:spring-cloud-starter-finders"
 }

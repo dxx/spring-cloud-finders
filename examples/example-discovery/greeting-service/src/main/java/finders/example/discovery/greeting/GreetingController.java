@@ -1,4 +1,4 @@
-package finders.example.discovery.hello;
+package finders.example.discovery.greeting;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
  * @author dxx
  */
 @RestController
-public class HelloController {
+public class GreetingController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(HelloController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(GreetingController.class);
 
     @Value("${spring.application.name}")
     private String appName;
