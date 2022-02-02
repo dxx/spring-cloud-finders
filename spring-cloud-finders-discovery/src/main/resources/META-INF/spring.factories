@@ -1,4 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 io.github.dxx.finders.cloud.FindersServiceAutoConfiguration,\
 io.github.dxx.finders.cloud.registry.FindersRegistryAutoConfiguration,\
-io.github.dxx.finders.cloud.discovery.FindersDiscoveryAutoConfiguration
+io.github.dxx.finders.cloud.discovery.FindersDiscoveryAutoConfiguration,\
+io.github.dxx.finders.cloud.endpoint.FindersDiscoveryEndpointAutoConfiguration
