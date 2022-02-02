@@ -1,7 +1,9 @@
 apply plugin: "maven-publish"
+apply plugin: "signing"
 
 java {
     withSourcesJar()
+    withJavadocJar()
 }
 
 publishing {
@@ -32,6 +34,12 @@ publishing {
                     }
                 }
 
+                scm {
+                    connection = "scm:git:git://github.com/dxx/spring-cloud-finders.git"
+                    developerConnection = "scm:git:ssh://github.com/dxx/spring-cloud-finders.git"
+                    url = "https://github.com/dxx/spring-cloud-finders"
+                }
+
                 withXml {
                     def node = asNode()
                     node.dependencies.dependency.findAll { xmlDep ->
@@ -50,5 +58,25 @@ publishing {
 
     repositories {
         mavenLocal()
+
+        maven {
+            def sonatypeUsername = project.hasProperty("sonatypeUsername") ?
+                    project.getProperties().get("sonatypeUsername") : ""
+            def sonatypePassword = project.hasProperty("sonatypePassword") ?
+                    project.getProperties().get("sonatypePassword") : ""
+
+            def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+            def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            url = version.endsWith("SNAPSHOT") ? snapshotsRepoUrl : releasesRepoUrl
+
+            credentials {
+                username = sonatypeUsername
+                password = sonatypePassword
+            }
+        }
     }
+}
+
+signing {
+    sign publishing.publications.mavenJava
 }
